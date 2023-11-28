@@ -1,3 +1,26 @@
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 28px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-light-100);
+
+  border: none;
+  outline: none;
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 .primary {
   background-color: red;
 }
@@ -12,8 +35,4 @@
 
 .link {
   background-color: yellow;
-}
-
-.fullWidth {
-  width: 100%;
 }
