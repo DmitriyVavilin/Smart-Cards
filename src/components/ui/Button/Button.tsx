@@ -3,39 +3,43 @@ import {
   ComponentPropsWithoutRef,
   ElementType,
   ReactNode,
+  Ref,
   forwardRef,
 } from 'react'
 
-import clsx from 'clsx'
+import { Logout } from '@/assets/log-out/Logout'
+import { clsx } from 'clsx'
 
-import s from './button.module.scss'
-
-export type ButtonVariants = 'link' | 'primary' | 'secondary' | 'tertiary'
+import s from './Button.module.scss'
 
 type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref']
 
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T
-  children?: ReactNode
+  children?: ReactNode | string
   className?: string
   fullWidth?: boolean
-  variant?: ButtonVariants
+  icon: string | undefined
+  variant: 'link' | 'primary' | 'secondary' | 'tertiary'
 } & ComponentPropsWithoutRef<T>
 
 export const Button = forwardRef(
-  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: PolymorphicRef<T>) => {
+  <T extends ElementType = 'button'>(props: ButtonProps<T>, ref?: Ref<PolymorphicRef<T>>) => {
     const {
       as: Component = 'button',
       children,
       className,
       fullWidth,
+      icon,
       variant = 'primary',
       ...rest
     } = props
-    const buttonClass = clsx(s.button, s[variant], className, fullWidth && s.fullWidth)
+
+    const btnClassName = clsx(s.button, s[variant], className, fullWidth && s.fullWidth)
 
     return (
-      <Component className={buttonClass} ref={ref} {...rest}>
+      <Component className={btnClassName} {...rest} ref={ref}>
+        {icon && <Logout className={s.icon} />}
         {children}
       </Component>
     )

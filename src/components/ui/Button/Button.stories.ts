@@ -41,17 +41,29 @@ export const Tertiary: Story = {
 }
 export const Link: Story = {
   args: {
+    as: 'a',
     children: 'Tertiary Button',
     disabled: false,
+    fullWidth: false,
     variant: 'link',
   },
 }
 
 export const FullWidth: Story = {
   args: {
+    as: 'button',
     children: 'Full Width Button',
     disabled: false,
     fullWidth: true,
+    variant: 'primary',
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    as: 'button',
+    children: 'Button with Icon',
+    icon: true,
     variant: 'primary',
   },
 }
