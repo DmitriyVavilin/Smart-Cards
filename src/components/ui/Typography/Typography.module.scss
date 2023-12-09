@@ -1,0 +1,62 @@
+@mixin typography(
+  $font-size: var(--font-size-m),
+  $font-weight: 700,
+  $line-height: var(--line-height-m)
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: var(--color-dark-900);
+}
+
+.large {
+  @include typography(var(--font-size-xxl), $line-height: var(--line-height-l));
+}
+
+.h1 {
+  @include typography(var(--font-size-xl), $line-height: var(--line-height-l));
+}
+
+.h2 {
+  @include typography(var(--font-size-l));
+}
+
+.h3,
+.subtitle1 {
+  @include typography;
+}
+
+.body1 {
+  @include typography($font-weight: 400);
+}
+
+.body2 {
+  @include typography(var(--font-size-s), 400);
+}
+
+.subtitle2 {
+  @include typography(var(--font-size-s));
+}
+
+.caption {
+  @include typography(var(--font-size-xs), 400, var(--line-height-s));
+}
+
+.overline {
+  @include typography(var(--font-size-xs), $line-height: var(--line-height-s));
+}
+
+.link1 {
+  @include typography(var(--font-size-s), 400);
+}
+
+.link2 {
+  @include typography(var(--font-size-xs), 400, $line-height: var(--line-height-s));
+}
+
+.link1,
+.link2 {
+  cursor: pointer;
+  color: var(--color-info-500);
+  text-decoration-line: underline;
+}
