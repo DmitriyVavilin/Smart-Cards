@@ -1,22 +1,23 @@
-import { ComponentPropsWithoutRef, ElementRef, ElementType, ReactNode, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ElementType, forwardRef } from 'react'
 
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
 import s from './CheckBox.module.scss'
+
 type CheckBoxProps<T extends ElementType> = {
-  as?: T
-  children?: ReactNode
+  checked?: boolean
   className?: string
-  disabled: boolean
-  label: string
+  disabled?: boolean
+  label?: string
+  onCheckedChange?: (checked: boolean) => void
 } & ComponentPropsWithoutRef<T>
 export const CheckBox = forwardRef<
   ElementRef<typeof CheckboxRadix.Root>,
   CheckBoxProps<ElementType>
 >((props: CheckBoxProps<ElementType>, ref) => {
-  const { as: Component = 'button', children, className, disabled, label, ...rest } = props
+  const { checked, className, disabled, label, onCheckedChange, ...rest } = props
 
   const classNames = {
     checkBoxClassName: clsx(s.button, s.className, disabled && s.disabled, className && className),
