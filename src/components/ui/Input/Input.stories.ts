@@ -1,5 +1,6 @@
-import { Input } from '@/components/ui/input/Input'
 import { Meta, StoryObj } from '@storybook/react'
+
+import { Input } from './'
 
 const meta = {
   argTypes: {},
