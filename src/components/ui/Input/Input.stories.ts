@@ -1,6 +1,5 @@
+import { Input } from '@/components/ui/Input/Input'
 import { Meta, StoryObj } from '@storybook/react'
-
-import { Input } from './'
 
 const meta = {
   argTypes: {},
@@ -36,7 +35,7 @@ export const InputPassword: Story = {
 
 export const InputError: Story = {
   args: {
-    error: 'Error!',
+    error: 'Error',
     placeholder: 'Input',
     type: 'text',
   },
@@ -46,30 +45,6 @@ export const InputDisabled: Story = {
   args: {
     disabled: true,
     placeholder: 'Input',
-    type: 'text',
-  },
-}
-
-export const InputActive: Story = {
-  args: {
-    placeholder: 'Input',
-    theme: 'active',
-    type: 'text',
-  },
-}
-
-export const InputHover: Story = {
-  args: {
-    placeholder: 'Input',
-    theme: 'hover',
-    type: 'text',
-  },
-}
-
-export const InputFocus: Story = {
-  args: {
-    placeholder: 'Input',
-    theme: 'focus',
     type: 'text',
   },
 }

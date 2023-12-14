@@ -7,7 +7,7 @@ import {
   forwardRef,
 } from 'react'
 
-import { Logout } from '@/assets/log-out/Logout'
+import { Logout } from '@/assets/Logout'
 import { clsx } from 'clsx'
 
 import s from './Button.module.scss'
