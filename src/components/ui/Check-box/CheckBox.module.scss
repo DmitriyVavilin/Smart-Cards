@@ -9,7 +9,7 @@
 
   width: 16px;
   height: 16px;
-  margin: 0;
+  margin-right: 10px;
   padding: 0;
 
   background-color: transparent; // black
@@ -53,6 +53,7 @@
 .checkboxContainer {
   display: flex;
   align-items: flex-end;
+  padding: 10px;
 }
 
 .CheckboxIndicator {
@@ -73,12 +74,14 @@
 
 .Label {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 
-  padding-left: 15px;
-
-  font-size: 15px;
-  line-height: 1;
-  color: white; /* Default label color */
+  &.disabled {
+    cursor: context-menu;
+    color: var(--color-dark-100);
+  }
 }
 
 .disabled {

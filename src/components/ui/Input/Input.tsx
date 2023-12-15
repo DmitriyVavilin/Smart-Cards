@@ -1,4 +1,5 @@
 import React, { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import { ChangeHandler } from 'react-hook-form'
 
 import CloseEyes from '@/assets/CloseEyes'
 import OpenEyes from '@/assets/OpenEyes'
@@ -12,13 +13,13 @@ export type InputProps = {
   className?: string
   error?: string | undefined
   label?: string
-  onChange?: (value: string) => void
+  onChange?: ((value: string) => void) | ChangeHandler
   onEnter?: () => void
   onValueChange?: (value: string) => void
   placeholder?: string
 } & ComponentPropsWithoutRef<'input'>
 
-export const Input = forwardRef(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -33,7 +34,7 @@ export const Input = forwardRef(
       type,
       ...restPros
     }: InputProps,
-    ref: React.LegacyRef<HTMLInputElement> | undefined
+    ref
   ) => {
     const showError = error ? s.error : ''
     const [showPassword, SetShowPassword] = useState(false)
@@ -72,11 +73,7 @@ export const Input = forwardRef(
           <label className={s.label}>Input</label>
         </Typography>
         <div className={s.inputContainer}>
-          {type === 'search' && (
-            <div className={s.inputSearch}>
-              <Search />
-            </div>
-          )}
+          {type === 'search' && <Search className={s.inputSearch} />}
           {type === 'password' && (
             <button
               className={s.passwordIcon}

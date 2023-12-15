@@ -1,10 +1,9 @@
-import { Input } from '@/components/ui/Input/Input'
+import { Checkbox } from '@radix-ui/react-checkbox'
 
 export function App() {
   return (
     <div>
-      <Input type={'password'} />
-      <Input type={'search'} />
+      <Checkbox value={'sas'} />
     </div>
   )
 }
