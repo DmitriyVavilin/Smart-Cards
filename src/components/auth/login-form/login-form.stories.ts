@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { LoginForm } from './login-form'
 
 const meta = {
+  argTypes: {
+    onSubmit: { action: 'submitted' },
+  },
   component: LoginForm,
   tags: ['autodocs'],
   title: 'Auth/LoginForm',

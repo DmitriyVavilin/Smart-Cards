@@ -94,7 +94,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
           />
         </div>
-        {showError && <span className={s.errorText}>Error!</span>}
+        {showError && <span className={s.errorText}>{error}!</span>}
       </div>
     )
   }
