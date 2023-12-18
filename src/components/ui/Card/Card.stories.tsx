@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Button } from '@/components/ui/Button'
+
 import { Card } from './'
 
 const meta = {
-  argTypes: {
-    title: { control: { type: 'text' } },
-  },
   component: Card,
   tags: ['autodocs'],
   title: 'Components/Card',
@@ -14,8 +13,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const card: Story = {
+export const Default: Story = {
   args: {
-    children: 'Simple Card',
+    children: <Button>fdfdfdf</Button>,
   },
 }

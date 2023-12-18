@@ -8,7 +8,7 @@ type TypographyProps<T extends ElementType> = {
   as?: T
   children?: ReactNode
   className?: string
-  variant?:
+  variant:
     | 'body1'
     | 'body2'
     | 'caption'
@@ -23,16 +23,14 @@ type TypographyProps<T extends ElementType> = {
     | 'subtitle2'
 } & ComponentPropsWithoutRef<T>
 
-export const Typography = <T extends ElementType = 'span'>(props: TypographyProps<T>) => {
-  const { as: Component = 'span', children, className, variant, ...rest } = props
+export const Typography = <T extends ElementType = 'h1'>(
+  props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
+) => {
+  const { as: Component = 'h1', children, className, variant, ...rest } = props
 
-  const typographyClass = {
-    root: clsx(s[variant as keyof typeof s], className),
+  const classNames = {
+    root: clsx(s[variant], className),
   }
 
-  return (
-    <Component className={typographyClass.root} {...rest}>
-      {children}
-    </Component>
-  )
+  return <Component className={classNames.root} {...rest} />
 }
