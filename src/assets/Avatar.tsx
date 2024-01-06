@@ -1,7 +1,7 @@
 import { Ref, SVGProps, forwardRef, memo } from 'react'
 const Avatar = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
-    fill={'none'}
+    fill={'#fff'}
     height={36}
     ref={ref}
     width={36}
