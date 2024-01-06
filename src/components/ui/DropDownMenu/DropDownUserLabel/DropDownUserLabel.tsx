@@ -1,36 +1,36 @@
 import Avatar from '@/assets/Avatar'
 import { Logout } from '@/assets/Logout'
 import Profile from '@/assets/Profile'
-import { DropDownItem } from '@/components/ui/DropDownMenu/DropDownItem'
-import { DropDownMenu } from '@/components/ui/DropDownMenu/DropDownMenu'
-import { DropDownSeparator } from '@/components/ui/DropDownMenu/DropDownSeparator'
+import { DropdownItem } from '@/components/ui/DropDownMenu/DropdownItem'
+import { DropdownMenu } from '@/components/ui/DropDownMenu/DropdownMenu'
+import { DropdownSeparator } from '@/components/ui/DropDownMenu/DropdownSeparator'
 
 import s from './dropDownUserLabel.module.scss'
 
 export const DropDownUserLabel = () => {
   return (
-    <DropDownMenu
+    <DropdownMenu
       trigger={
         <button className={s.button}>
           <Avatar />
         </button>
       }
     >
-      <DropDownItem>
+      <DropdownItem>
         <Avatar />
         dv.vavilin@mail.ru
-      </DropDownItem>
-      <DropDownSeparator />
-      <DropDownItem>
+      </DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem>
         <Profile />
         My Profile
-      </DropDownItem>
-      <DropDownSeparator />
-      <DropDownItem>
+      </DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem>
         <Logout />
         Sign Out
-      </DropDownItem>
-      <DropDownSeparator />
-    </DropDownMenu>
+      </DropdownItem>
+      <DropdownSeparator />
+    </DropdownMenu>
   )
 }
