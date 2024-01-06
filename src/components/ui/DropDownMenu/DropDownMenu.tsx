@@ -12,7 +12,7 @@ export const DropDownMenu = (props: Props) => {
 
   return (
     <DropdownMenu.Root {...rest}>
-      <DropdownMenu.Trigger>{trigger}</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger className={s.trigger}>{trigger}</DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={s.content} sideOffset={5}>
           {children}
