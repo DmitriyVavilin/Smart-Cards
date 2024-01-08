@@ -2,9 +2,9 @@ import { Ref, SVGProps, forwardRef, memo } from 'react'
 const Profile = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     fill={'none'}
-    height={16}
+    height={18}
     ref={ref}
-    width={16}
+    width={18}
     xmlns={'http://www.w3.org/2000/svg'}
     {...props}
   >
