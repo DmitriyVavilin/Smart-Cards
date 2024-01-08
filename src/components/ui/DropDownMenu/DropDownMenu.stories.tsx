@@ -1,28 +1,16 @@
-import Avatar from '@/assets/Avatar'
-import { DropdownItem } from '@/components/ui/DropDownMenu/DropdownItem'
-import { DropdownMenu } from '@/components/ui/DropDownMenu/DropdownMenu'
+import { DropDownUserLabel } from '@/components/ui/DropDownMenu/DropDownUserLabel/DropDownUserLabel'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   argTypes: {},
-  component: DropdownMenu,
+  component: DropDownUserLabel,
   tags: ['autodocs'],
-  title: 'Components/Checkbox',
-} satisfies Meta<typeof DropdownMenu>
+  title: 'Components/DropDownUserLabel',
+} satisfies Meta<typeof DropDownUserLabel>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-// @ts-ignore
-export const DropDown: Story = {
-  args: {
-    children: (
-      <>
-        <DropdownMenu>
-          <Avatar />
-          <DropdownItem>Login</DropdownItem>
-        </DropdownMenu>
-      </>
-    ),
-  },
+export const DropDownDefault: Story = {
+  args: {},
 }

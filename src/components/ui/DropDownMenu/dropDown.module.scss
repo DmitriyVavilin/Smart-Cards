@@ -1,9 +1,9 @@
-.trigger {
+.buttonTrigger {
   all: unset;
   cursor: pointer;
 }
 
-.content {
+.dropdownMenuContent {
   position: relative;
   z-index: 100;
 
@@ -23,16 +23,25 @@
   }
 }
 
-.content::before {
-  content: '';
+.arrowWrapper {
+  fill: var(--color-dark-700);
+  stroke: var(--color-dark-300);
+  stroke-width: 22px;
+}
 
+.arrow {
   position: absolute;
-  top: -9px;
-  right: 8px;
+  top: -6px;
+  left: calc(50% - 6px);
+  transform: rotate(45deg);
 
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--color-dark-700);
-  border-left: 10px solid transparent;
+  width: 0.75rem;
+  height: 0.75rem;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-300);
+  border-top: none;
+  border-left: none;
 }
 
 .item {
@@ -49,7 +58,7 @@
   outline: none;
 
   &:focus-visible {
-    background-color: var(--color-dark-100);
+    background-color: var(--color-dark-500);
     outline: none;
   }
 

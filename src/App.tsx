@@ -1,5 +1,9 @@
 import { DropDownUserLabel } from '@/components/ui/DropDownMenu/DropDownUserLabel/DropDownUserLabel'
 
 export function App() {
-  return <DropDownUserLabel />
+  return (
+    <div style={{ color: 'red' }}>
+      <DropDownUserLabel />
+    </div>
+  )
 }
