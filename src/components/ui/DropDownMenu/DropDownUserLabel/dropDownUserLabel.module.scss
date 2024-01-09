@@ -1,2 +1,15 @@
 .container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+}
+
+.name {
+  font-size: var(--font-size-s);
+  color: var(--color-light-100);
+}
+
+.email {
+  color: var(--color-dark-100);
 }
