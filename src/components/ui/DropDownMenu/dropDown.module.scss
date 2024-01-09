@@ -4,8 +4,8 @@
 }
 
 .dropdownMenuContent {
-  position: relative;
-  z-index: 100;
+  display: flex;
+  flex-direction: column;
 
   font-size: var(--font-size-m);
   line-height: var(--line-height-s);
@@ -25,12 +25,11 @@
 
 .arrowWrapper {
   fill: var(--color-dark-700);
-  stroke: var(--color-dark-300);
-  stroke-width: 22px;
 }
 
 .arrow {
   position: absolute;
+  z-index: -1;
   top: -6px;
   left: calc(50% - 6px);
   transform: rotate(45deg);
@@ -46,6 +45,9 @@
 
 .item {
   cursor: pointer;
+  user-select: none;
+
+  position: relative;
 
   display: flex;
   gap: 6px;
@@ -58,7 +60,8 @@
   outline: none;
 
   &:focus-visible {
-    background-color: var(--color-dark-500);
+    z-index: 1;
+    background-color: var(--color-dark-100);
     outline: none;
   }
 
