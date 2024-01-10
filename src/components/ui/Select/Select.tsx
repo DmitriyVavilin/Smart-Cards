@@ -37,7 +37,11 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content ref={ref}>
-            <SelectRadix.Viewport>{children}</SelectRadix.Viewport>
+            <SelectRadix.Viewport>
+              <SelectRadix.Group>
+                <SelectRadix.Label aria-label={label}>{children}</SelectRadix.Label>
+              </SelectRadix.Group>
+            </SelectRadix.Viewport>
           </SelectRadix.Content>
         </SelectRadix.Portal>
       </SelectRadix.Root>
