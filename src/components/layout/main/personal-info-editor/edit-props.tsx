@@ -51,7 +51,7 @@ export const EditNicknameForm = ({
         {...register('nickname')}
         error={errors.nickname?.message}
         label={'Nickname'}
-        // styles={{ paddingBottom: '16px', paddingTop: '12px' }}
+        style={{ paddingBottom: '16px', paddingTop: '12px' }}
         type={'text'}
       />
       <Button disabled={isSubmitting} fullWidth type={'submit'}>

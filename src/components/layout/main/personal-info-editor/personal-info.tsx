@@ -22,53 +22,55 @@ export const PersonalInfo = ({ onSubmit, userName, userPhoto }: Props) => {
 
   return (
     <Card className={s.personalInfo}>
-      <Typography
-        style={{ color: '#fff', paddingBottom: '27px', textAlign: 'center' }}
-        variant={'large'}
-      >
-        Personal Information
-      </Typography>
-      <div className={s.editUserLogoWrapper}>
-        <img alt={'user'} className={s.userLogo} src={userPhoto} />
-        {!editNicknameMode && (
-          <div className={s.editIconContainer}>
-            <EditIcon />
-          </div>
-        )}
-      </div>
-      <div className={s.editInfoWrapper}>
-        {!editNicknameMode ? (
-          <Typography as={'h1'} style={{ color: '#fff', textAlign: 'center' }} variant={'h1'}>
-            {userName}
-          </Typography>
-        ) : (
-          <EditNicknameForm
-            editNicknameMode={editNicknameMode}
-            onSubmit={onSubmit}
-            setEditNicknameMode={setEditNicknameMode}
-            userName={userName}
-          />
-        )}
-        <div
-          className={s.editInfoIcon}
-          onClick={() => {
-            setEditNicknameMode(!editNicknameMode)
-          }}
+      <div className={s.wrapper}>
+        <Typography
+          style={{ color: '#fff', paddingBottom: '27px', textAlign: 'center' }}
+          variant={'large'}
         >
-          {!editNicknameMode && <EditIcon />}
+          Personal Information
+        </Typography>
+        <div className={s.editUserLogoWrapper}>
+          <img alt={'user'} className={s.userLogo} src={userPhoto} />
+          {!editNicknameMode && (
+            <div className={s.editIconContainer}>
+              <EditIcon />
+            </div>
+          )}
         </div>
+        <div className={s.editInfoWrapper}>
+          {!editNicknameMode ? (
+            <Typography as={'h1'} style={{ color: '#fff', textAlign: 'center' }} variant={'h1'}>
+              {userName}
+            </Typography>
+          ) : (
+            <EditNicknameForm
+              editNicknameMode={editNicknameMode}
+              onSubmit={onSubmit}
+              setEditNicknameMode={setEditNicknameMode}
+              userName={userName}
+            />
+          )}
+          <div
+            className={s.editInfoIcon}
+            onClick={() => {
+              setEditNicknameMode(!editNicknameMode)
+            }}
+          >
+            {!editNicknameMode && <EditIcon />}
+          </div>
+        </div>
+        {!editNicknameMode && (
+          <>
+            <Typography style={{ color: '#808080', paddingBottom: '13px' }} variant={'body2'}>
+              jdfge@skdfd.tj
+            </Typography>
+            <Button variant={'secondary'}>
+              <LogoutIcon />
+              Logout
+            </Button>
+          </>
+        )}
       </div>
-      {!editNicknameMode && (
-        <>
-          <Typography style={{ color: '#808080', paddingBottom: '13px' }} variant={'body2'}>
-            jdfge@skdfd.tj
-          </Typography>
-          <Button variant={'secondary'}>
-            <LogoutIcon />
-            Logout
-          </Button>
-        </>
-      )}
     </Card>
   )
 }
