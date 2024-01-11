@@ -1,0 +1,78 @@
+.trigger {
+  all: unset;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 186px;
+  height: 36px;
+  padding: 6px 12px;
+
+  background-color: transparent;
+  border: 1px solid var(--color-dark-900); // change 300
+  border-radius: 2px;
+
+  &:focus-visible {
+    border: 2px solid var(--color-accent-700);
+  }
+
+  &:disabled {
+    color: var(--color-dark-900); // change 300
+    border: 1px solid var(--color-dark-900); // change 300
+  }
+}
+
+.label {
+  color: var(--color-dark-100) !important;
+
+  &:disabled {
+    color: var(--color-dark-900) !important; // change 300
+  }
+}
+
+.content {
+  overflow: hidden;
+
+  font-size: 16px;
+  color: black;
+
+  border: 1px solid var(--color-dark-900); // change 300
+  border-top: none;
+}
+
+.item {
+  user-select: none;
+
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 210px;
+  height: 36px;
+  padding: 6px 12px;
+
+  color: var(--color-light-100);
+
+  &:focus-visible {
+    background-color: var(--color-accent-900);
+    outline: none;
+  }
+}
+
+.SelectScrollButton {
+  cursor: default;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 25px;
+
+  color: var(--violet-11);
+
+  background-color: white;
+}
