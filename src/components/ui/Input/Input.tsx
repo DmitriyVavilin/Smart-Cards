@@ -69,7 +69,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={classNames.root}>
-        <Typography as={'label'} className={s.label} variant={'body2'}>
+        <Typography as={'h1'} className={s.label} variant={'body2'}>
           <label className={s.label}>Input</label>
         </Typography>
         <div className={s.inputContainer}>
