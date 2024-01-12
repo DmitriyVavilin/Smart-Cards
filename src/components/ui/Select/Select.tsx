@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import ArrowDown from '@/assets/ArrowDown'
 import { SelectItem } from '@/components/ui/Select/SelectItem'
 import { Typography } from '@/components/ui/Typography'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
 import * as SelectRadix from '@radix-ui/react-select'
 
 import s from './Select.module.scss'
@@ -14,7 +14,7 @@ type Options = {
 
 type Props = {
   className?: string
-  defaultValue: string
+  defaultValue?: string
   disabled?: boolean
   label?: string
   placeholder?: string
@@ -43,19 +43,24 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
         defaultValue={defaultValue}
         disabled={disabled}
         onValueChange={onValueChange}
-        open={open}
         required
         value={value}
         {...rest}
       >
         {label && (
-          <Typography as={'h1'} className={s.label} variant={'body2'}>
+          <Typography
+            as={'h1'}
+            className={`${s.label} ${disabled && s.labelDisabled}`}
+            variant={'body2'}
+          >
             {label}
           </Typography>
         )}
         <SelectRadix.Trigger className={s.trigger} ref={ref}>
-          <SelectRadix.Value defaultValue={value} placeholder={placeholder} />
-          <SelectRadix.Icon asChild></SelectRadix.Icon>
+          <SelectRadix.Value placeholder={placeholder} />
+          <SelectRadix.Icon asChild>
+            <ArrowDown className={s.icon} />
+          </SelectRadix.Icon>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content
@@ -76,9 +81,6 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
                 </SelectRadix.Label>
               </SelectRadix.Group>
             </SelectRadix.Viewport>
-            <SelectRadix.ScrollDownButton className={s.SelectScrollButton}>
-              <ChevronDownIcon />
-            </SelectRadix.ScrollDownButton>
           </SelectRadix.Content>
         </SelectRadix.Portal>
       </SelectRadix.Root>
