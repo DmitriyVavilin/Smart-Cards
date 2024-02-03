@@ -5,12 +5,11 @@ const meta = {
   argTypes: {},
   component: RadioGroup,
   tags: ['autodocs'],
-  title: 'Components/Select',
+  title: 'Components/RadioGroup',
 } satisfies Meta<typeof RadioGroup>
 
 export default meta
 type Story = StoryObj<typeof meta>
-
 const options = [
   { label: 'Dima', value: '1' },
   { label: 'Dayna', value: '2' },
@@ -18,5 +17,16 @@ const options = [
 ]
 
 export const RadioGroupDefault: Story = {
-  args: { defaultValue: options[0].value, options: options },
+  args: {
+    defaultValue: options[0].value,
+    options: options,
+  },
+}
+
+export const RadioGroupDisabled: Story = {
+  args: {
+    defaultValue: options[0].value,
+    disabled: true,
+    options: options,
+  },
 }
