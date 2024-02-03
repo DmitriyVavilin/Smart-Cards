@@ -13,7 +13,7 @@ export const SelectItem = forwardRef<ElementRef<typeof Item>, Props>((props: Pro
   return (
     <Item className={s.item} {...rest} {...props} ref={ref}>
       <ItemText>
-        <Typography style={{ color: '#FFFFFF' }} variant={'body1'}>
+        <Typography className={s.textItem} variant={'body1'}>
           {children}
         </Typography>
       </ItemText>
