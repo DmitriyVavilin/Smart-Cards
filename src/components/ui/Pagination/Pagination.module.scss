@@ -17,12 +17,12 @@
   align-items: center;
   justify-content: center;
 
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 
-  color: var(--color-text-primary);
+  color: var(--color-light-100);
 
-  border-radius: var(--border-radius-s);
+  border-radius: 4px;
 }
 
 .item {
@@ -31,7 +31,9 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: var(--outline-focus);
+    outline: var(--color-info-900);
+    stroke: var(--color-info-900);
+    stroke-width: 2px;
   }
 
   &:disabled {
@@ -40,12 +42,12 @@
   }
 
   &:hover:not(&:disabled) {
-    background-color: var(--color-bg-focus);
+    background-color: var(--color-dark-500);
   }
 
   &.selected {
-    color: var(--color-text-primary-contrast);
-    background-color: var(--color-bg-contrast);
+    color: var(--color-dark-900);
+    background-color: var(--color-light-100);
   }
 }
 
@@ -55,8 +57,7 @@
 
 .icon {
   .item:disabled & {
-    // important because icons have style prop
-    color: var(--color-action-disabled) !important;
+    color: var(--color-dark-100) !important;
   }
 }
 
@@ -71,5 +72,6 @@
 
 .select {
   flex-shrink: 0;
-  width: 50px;
+  width: 4.5rem;
+  margin-right: 10px;
 }
