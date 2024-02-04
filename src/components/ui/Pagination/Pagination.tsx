@@ -166,7 +166,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
       <Select
         className={s.select}
         onValueChange={onPerPageChangeHandler}
-        selectOptions={selectOptions}
+        options={selectOptions}
         value={selectPerPage}
       />
       на странице

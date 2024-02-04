@@ -16,7 +16,7 @@ export const SelectDefault: Story = {
   args: {
     defaultValue: 'Select-box 1',
     label: 'Select-box',
-    selectOptions: options,
+    options: options,
   },
 }
 export const SelectDisabled: Story = {
@@ -24,6 +24,6 @@ export const SelectDisabled: Story = {
     defaultValue: 'Select-box 1',
     disabled: true,
     label: 'Select-box',
-    selectOptions: options,
+    options: options,
   },
 }

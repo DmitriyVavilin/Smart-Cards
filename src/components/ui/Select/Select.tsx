@@ -17,8 +17,8 @@ type Props = {
   defaultValue?: string
   disabled?: boolean
   label?: string
+  options: Options[]
   placeholder?: string
-  selectOptions: Options[]
   value?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
@@ -31,9 +31,9 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
       onOpenChange,
       onValueChange,
       open,
+      options,
       placeholder,
       required,
-      selectOptions,
       value,
       ...rest
     } = props
@@ -73,7 +73,7 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, Props>(
             <SelectRadix.Viewport className={s.viewport}>
               <SelectRadix.Group>
                 <SelectRadix.Label aria-label={label}>
-                  {selectOptions.map(el => (
+                  {options.map(el => (
                     <SelectItem disabled={el.disabled} key={el.value} value={el.value}>
                       {el.value}
                     </SelectItem>
