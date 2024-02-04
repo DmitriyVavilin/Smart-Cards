@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import ForgotPasswordForm from '@/components/auth/forgot-form/forgot-password-form.tsx'
+import ForgotPasswordForm from '@/components/auth/forgot-form/forgot-password-form'
 
 const meta = {
   argTypes: {
