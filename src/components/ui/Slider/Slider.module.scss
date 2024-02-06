@@ -1,82 +1,94 @@
 .container {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-}
+  flex-direction: column;
+  gap: 0.312rem;
 
-.valueWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .sliderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  width: 36px;
-  height: 36px;
+    width: 15.688rem;
+    height: 2.25rem;
 
-  color: var(--color-light-100);
-  text-align: center;
+    .minMax {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  border: 1px solid var(--color-dark-300);
-}
+      width: 2.25rem;
+      height: 2.25rem;
 
-.root {
-  touch-action: none;
-  user-select: none;
+      border: 1px solid var(--color-dark-300);
+      border-radius: 2px;
 
-  position: relative;
+      .value {
+        color: var(--color-light-100);
+        background: transparent;
+      }
+    }
 
-  display: flex;
-  align-items: center;
+    .root {
+      touch-action: none;
+      user-select: none;
 
-  width: 100%;
-  height: 5px;
-}
+      position: relative;
 
-.track {
-  position: relative;
+      display: flex;
+      align-items: center;
 
-  flex-grow: 1;
+      width: 9.688rem;
+      height: 1rem;
 
-  height: 5px;
+      .track {
+        position: relative;
 
-  background-color: var(--color-accent-900);
-  border-radius: 9999px;
-}
+        flex-grow: 1;
 
-.range {
-  position: absolute;
-  height: 100%;
-  background-color: var(--color-accent-500);
-  border-radius: 9999px;
-}
+        height: 6px;
 
-.thumb {
-  display: block;
+        background-color: var(--color-accent-900);
+        border-radius: 9999px;
 
-  width: 16px;
-  height: 16px;
+        .range {
+          position: absolute;
+          height: 100%;
+          background-color: var(--color-accent-500);
+          border-radius: 9999px;
+        }
+      }
 
-  background-color: var(--color-accent-500);
-  border-radius: 10px;
-  box-shadow: 0 2px 10px var(--black-a7);
+      .thumb {
+        cursor: pointer;
 
-  &::after {
-    content: '';
+        position: relative;
 
-    position: absolute;
-    top: 4px;
-    left: 4px;
+        display: block;
 
-    width: 0.5rem;
-    height: 0.5rem;
+        width: 1rem;
+        height: 1rem;
 
-    background-color: var(--color-light-100);
-    border-radius: 50%;
-  }
+        background-color: var(--color-accent-500);
+        border-radius: 10px;
 
-  &:focus-visible {
-    border: 1px solid var(--color-accent-100);
-    outline: none;
-    box-shadow: 0 0 0 5px var(--black-a8);
+        &::after {
+          content: '';
+
+          position: absolute;
+          top: 4px;
+          left: 4px;
+
+          width: 0.5rem;
+          height: 0.5rem;
+
+          background-color: var(--color-light-100);
+          border-radius: 50%;
+        }
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
   }
 }

@@ -1,46 +1,44 @@
-import { ComponentPropsWithoutRef } from 'react'
-
 import { Typography } from '@/components/ui/Typography'
-import * as SliderRadix from '@radix-ui/react-slider'
+import * as SliderRadixUI from '@radix-ui/react-slider'
 
 import s from './Slider.module.scss'
 
-type Props = {
-  disabled?: boolean
+type SliderProps = {
   max?: number
   min?: number
   onChange?: (value: number[]) => void
-  step?: null | number
-  value: number | number[]
-} & ComponentPropsWithoutRef<typeof SliderRadix.Root>
-export const Slider = ({ max, min, onChange, step = 1, value, ...rest }: Props) => {
+  step?: number
+  value: number[]
+}
+export const Slider = ({ max, min, onChange, step = 1, value }: SliderProps) => {
   return (
-    <form>
-      <div className={s.container}>
-        <div className={s.valueWrapper}>
-          <Typography style={{ color: '#fff' }} variant={'body1'}>
+    <div className={s.container}>
+      <div className={s.sliderWrapper}>
+        <div className={s.minMax}>
+          <Typography as={'h3'} className={s.value} variant={'body1'}>
             {value[0]}
           </Typography>
         </div>
-        <SliderRadix.Root
-          step={step}
-          {...rest}
+        <SliderRadixUI.Root
           className={s.root}
           max={max}
           min={min}
           onValueChange={onChange}
+          step={step}
+          value={value}
         >
-          <SliderRadix.Track className={s.track}>
-            <SliderRadix.Range className={s.range} />
-          </SliderRadix.Track>
-          <SliderRadix.Thumb aria-label={'Volume'} className={s.thumb} />
-        </SliderRadix.Root>
-        <div className={s.valueWrapper}>
-          <Typography style={{ color: '#fff' }} variant={'body1'}>
+          <SliderRadixUI.Track className={s.track}>
+            <SliderRadixUI.Range className={s.range} />
+          </SliderRadixUI.Track>
+          <SliderRadixUI.Thumb aria-label={'Volume'} className={s.thumb} />
+          <SliderRadixUI.Thumb aria-label={'Volume'} className={s.thumb} />
+        </SliderRadixUI.Root>
+        <div className={s.minMax}>
+          <Typography as={'h3'} className={s.value} variant={'body1'}>
             {value[1]}
           </Typography>
         </div>
       </div>
-    </form>
+    </div>
   )
 }
