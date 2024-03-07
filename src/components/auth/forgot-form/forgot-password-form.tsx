@@ -26,7 +26,7 @@ export const ForgotPasswordForm = ({ onSubmit }: Props) => {
 
   return (
     <Card className={s.container}>
-      <Typography className={s.title} variant={'h1'}>
+      <Typography className={s.title} variant={'large'}>
         Forgot your password
       </Typography>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
