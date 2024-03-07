@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { NewPasswordForm } from '@/components/auth/new-password/new-password'
+import { CreatePassword } from '@/components/auth/new-password/create-password'
 
 const meta = {
   // argTypes: {
   //   onSubmit: { action: 'submitted' },
   // },
-  component: NewPasswordForm,
+  component: CreatePassword,
   tags: ['autodocs'],
   title: 'Auth/NewPasswordForm',
-} satisfies Meta<typeof NewPasswordForm>
+} satisfies Meta<typeof CreatePassword>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {}
+export const Default: Story = {}
