@@ -37,8 +37,18 @@ export const LoginForm = ({ onSubmit }: Props) => {
     <>
       <DevTool control={control} />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input error={errors.email?.message} {...register('email')} label={'email'} />
-        <Input error={errors.password?.message} {...register('password')} label={'password'} />
+        <Input
+          error={errors.email?.message}
+          type={'email'}
+          {...register('email')}
+          label={'email'}
+        />
+        <Input
+          error={errors.password?.message}
+          type={'password'}
+          {...register('password')}
+          label={'password'}
+        />
         <ControlledCheckBox control={control} label={'remember me'} name={'rememberMe'} />
         <Button type={'submit'}>Submit</Button>
       </form>
