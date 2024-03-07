@@ -9,13 +9,13 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '../../ui/card/card.module.scss'
+import s from './forgot-password-form.module.scss'
 
 export type FormValues = z.infer<typeof loginSchema>
 type Props = {
   onSubmit: (values: FormValues) => void
 }
-const ForgotPasswordForm = ({ onSubmit }: Props) => {
+export const ForgotPasswordForm = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { errors, isSubmitting },
@@ -26,58 +26,32 @@ const ForgotPasswordForm = ({ onSubmit }: Props) => {
   })
 
   return (
-    <Card className={s.loginPopUp}>
+    <Card className={s.container}>
+      <Typography className={s.title} variant={'h1'}>
+        Forgot your password
+      </Typography>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
-        <Typography
-          style={{ color: '#fff', paddingBottom: '51px', textAlign: 'center' }}
-          variant={'large'}
-        >
-          Forgot your password
-        </Typography>
         <Input
           {...register('email')}
+          className={s.input}
           error={errors.email?.message}
           label={'Email'}
-          style={{ marginBottom: '24px' }}
           type={'email'}
         />
-        <Typography
-          style={{ color: '#C3C1C7', marginBottom: '12px', opacity: 0.5 }}
-          variant={'body2'}
-        >
+        <Typography className={s.description} variant={'body2'}>
           Enter your email address and we will send you further instructions
         </Typography>
-        <Button
-          disabled={isSubmitting}
-          fullWidth
-          style={{ marginBottom: '20px', marginTop: '66px' }}
-          type={'submit'}
-        >
+        <Button className={s.sendButton} disabled={isSubmitting} fullWidth type={'submit'}>
           Send Instruction
         </Button>
-        <Typography
-          style={{ color: '#C3C1C7', marginBottom: '12px', textAlign: 'center' }}
-          variant={'body2'}
-        >
+        <Typography className={s.descriptionPassword} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Typography
-          as={'a'}
-          style={{
-            color: '#8C61FF',
-            fontSize: '16px',
-            fontWeight: 700,
-            textAlign: 'center',
-            textDecoration: 'underline',
-          }}
-          variant={'link1'}
-        >
+        <Button as={'a'} className={s.tryLoggingIn} variant={'link'}>
           Try logging in
-        </Typography>
+        </Button>
       </form>
     </Card>
   )
 }
-
-export default ForgotPasswordForm
