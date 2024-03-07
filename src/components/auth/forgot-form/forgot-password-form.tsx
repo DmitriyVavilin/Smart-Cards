@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
 
 import { loginSchema } from '@/components/auth/forgot-form/validators'
+import { ControlledInput } from '@/components/controlled/controlledInput'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { Input } from '@/components/ui/Input'
 import { Typography } from '@/components/ui/Typography'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -18,9 +18,8 @@ type Props = {
 export const ForgotPasswordForm = ({ onSubmit }: Props) => {
   const {
     control,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
     handleSubmit,
-    register,
   } = useForm<FormValues>({
     resolver: zodResolver(loginSchema),
   })
@@ -32,13 +31,7 @@ export const ForgotPasswordForm = ({ onSubmit }: Props) => {
       </Typography>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
-        <Input
-          {...register('email')}
-          className={s.input}
-          error={errors.email?.message}
-          label={'Email'}
-          type={'email'}
-        />
+        <ControlledInput control={control} label={'Email'} name={'email'} placeholder={'Email'} />
         <Typography className={s.description} variant={'body2'}>
           Enter your email address and we will send you further instructions
         </Typography>
