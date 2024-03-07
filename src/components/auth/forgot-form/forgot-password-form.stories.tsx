@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import ForgotPasswordForm from '@/components/auth/forgot-form/forgot-password-form'
+import { ForgotPasswordForm } from '@/components/auth/forgot-form/forgot-password-form'
 
 const meta = {
   argTypes: {
@@ -14,4 +14,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {}
+export const Default: Story = {}
