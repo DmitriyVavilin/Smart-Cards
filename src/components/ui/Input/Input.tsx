@@ -69,8 +69,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={classNames.root}>
-        <Typography as={'label'} className={s.label} variant={'body2'}>
-          <label className={s.label}>Input</label>
+        <Typography as={'h1'} className={s.label} variant={'body2'}>
+          <label className={s.label}>{label}</label>
         </Typography>
         <div className={s.inputContainer}>
           {type === 'search' && <Search className={s.inputSearch} />}

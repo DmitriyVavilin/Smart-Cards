@@ -52,8 +52,8 @@
 
 .checkboxContainer {
   display: flex;
-  align-items: flex-end;
-  padding: 10px;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .CheckboxIndicator {
@@ -74,9 +74,13 @@
 
 .Label {
   cursor: pointer;
+
   display: flex;
   align-items: center;
+
   box-sizing: border-box;
+
+  color: var(--color-light-100);
 
   &.disabled {
     cursor: context-menu;

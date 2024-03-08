@@ -14,12 +14,16 @@ export const DropdownMenu = (props: Props) => {
   return (
     <DropdownMenuRadix.Root {...rest}>
       <DropdownMenuRadix.Trigger asChild>
-        {<button className={s.buttonTrigger}>{trigger}</button>}
+        {
+          <button aria-label={'Customise options'} className={s.buttonTrigger}>
+            {trigger}
+          </button>
+        }
       </DropdownMenuRadix.Trigger>
       <DropdownMenuRadix.Portal>
         <DropdownMenuRadix.Content
           align={align}
-          alignOffset={-160}
+          alignOffset={-10}
           className={s.dropdownMenuContent}
           sideOffset={3}
         >
