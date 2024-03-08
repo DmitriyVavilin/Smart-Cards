@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 420px;
+  height: 528px;
+  padding: 33px 36px 29px;
+}
+
+.title {
+  color: var(--color-light-100);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.singUp {
+  margin-top: 40px;
+}
+
+.description {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+
+  color: var(--color-light-900);
+  text-align: center;
+
+  opacity: 0.5;
+}
+
+.singIn {
+  text-decoration: underline;
+}
