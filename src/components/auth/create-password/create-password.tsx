@@ -1,19 +1,17 @@
-import { useForm } from 'react-hook-form'
-
-import { loginSchema } from '@/components/auth/forgot-form/validators'
+import {
+  createPasswordValues,
+  useCreatePasswordForm,
+} from '@/components/auth/create-password/useCreatePasswordForm'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
 import { ControlledInput } from '@/components/ui/controlled/controlled-Input/controlledInput'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
 import s from './create-password.module.scss'
 
-export type FormValues = z.infer<typeof loginSchema>
 type Props = {
-  onSubmit: (values: FormValues) => void
+  onSubmit: (values: createPasswordValues) => void
 }
 
 export const CreatePassword = ({ onSubmit }: Props) => {
@@ -21,9 +19,7 @@ export const CreatePassword = ({ onSubmit }: Props) => {
     control,
     formState: { isSubmitting },
     handleSubmit,
-  } = useForm<FormValues>({
-    resolver: zodResolver(loginSchema),
-  })
+  } = useCreatePasswordForm()
 
   return (
     <Card className={s.container}>

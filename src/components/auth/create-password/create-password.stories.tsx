@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { CreatePassword } from '@/components/auth/new-password/create-password'
+import { CreatePassword } from '@/components/auth/create-password/create-password'
 
 const meta = {
   // argTypes: {
