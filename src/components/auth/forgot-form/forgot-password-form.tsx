@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form'
 
 import { loginSchema } from '@/components/auth/forgot-form/validators'
-import { ControlledInput } from '@/components/controlled/controlledInput'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
+import { ControlledInput } from '@/components/ui/controlled/controlled-Input/controlledInput'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
