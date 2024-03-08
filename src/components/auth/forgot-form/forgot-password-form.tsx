@@ -1,28 +1,24 @@
-import { useForm } from 'react-hook-form'
-
-import { loginSchema } from '@/components/auth/forgot-form/validators'
+import {
+  forgotPasswordValues,
+  useForgotPasswordForm,
+} from '@/components/auth/forgot-form/useForgotPasswordForm'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
 import { ControlledInput } from '@/components/ui/controlled/controlled-Input/controlledInput'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
 import s from './forgot-password-form.module.scss'
 
-export type FormValues = z.infer<typeof loginSchema>
 type Props = {
-  onSubmit: (values: FormValues) => void
+  onSubmit: (values: forgotPasswordValues) => void
 }
 export const ForgotPasswordForm = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { isSubmitting },
     handleSubmit,
-  } = useForm<FormValues>({
-    resolver: zodResolver(loginSchema),
-  })
+  } = useForgotPasswordForm()
 
   return (
     <Card className={s.container}>
