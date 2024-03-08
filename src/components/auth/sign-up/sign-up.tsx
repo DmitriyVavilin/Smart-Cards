@@ -1,28 +1,21 @@
-import { useForm } from 'react-hook-form'
-
-import { signUpSchema } from '@/components/auth/sign-up/validator'
+import { SignUpFormValues, useSignUp } from '@/components/auth/sign-up/useSingUpForm'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
 import { ControlledInput } from '@/components/ui/controlled/controlled-Input/controlledInput'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
 import s from './sing-up.module.scss'
 
-export type FormValues = z.infer<typeof signUpSchema>
 type Props = {
-  onSubmit: (values: FormValues) => void
+  onSubmit: (values: SignUpFormValues) => void
 }
 export const SignUpForm = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { isSubmitting },
     handleSubmit,
-  } = useForm<FormValues>({
-    resolver: zodResolver(signUpSchema),
-  })
+  } = useSignUp()
 
   return (
     <Card className={s.container}>
