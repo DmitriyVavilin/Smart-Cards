@@ -1,0 +1,34 @@
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: 800px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 24px;
+
+    border: 1px solid var(--color-dark-500);
+  }
+}
+
+.title {
+  margin: 0 10px 0 0;
+  color: var(--color-light-100);
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
