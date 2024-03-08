@@ -1,33 +1,28 @@
-import { useForm } from 'react-hook-form'
-
-import { signUpSchema } from '@/components/auth/sign-up/validator'
+import { FormValues, useSignIn } from '@/components/auth/sing-in/useSignIn'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
+import { ControlledCheckBox } from '@/components/ui/controlled/Controlled-Checkbox/ControlledCheckBox'
 import { ControlledInput } from '@/components/ui/controlled/controlled-Input/controlledInput'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
-import s from './sing-up.module.scss'
+import s from './sing-in.module.scss'
 
-export type FormValues = z.infer<typeof signUpSchema>
 type Props = {
-  onSubmit: (values: FormValues) => void
+  onSubmit: (data: FormValues) => void
 }
-export const SignUpForm = ({ onSubmit }: Props) => {
+
+export const SignInForm = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { isSubmitting },
     handleSubmit,
-  } = useForm<FormValues>({
-    resolver: zodResolver(signUpSchema),
-  })
+  } = useSignIn()
 
   return (
     <Card className={s.container}>
       <Typography className={s.title} variant={'large'}>
-        Sign Up
+        Sign In
       </Typography>
       <form className={s.form} noValidate onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
@@ -45,21 +40,15 @@ export const SignUpForm = ({ onSubmit }: Props) => {
           placeholder={'Password'}
           type={'password'}
         />
-        <ControlledInput
-          control={control}
-          label={'Confirm Password'}
-          name={'confirmPassword'}
-          placeholder={'Confirm Password'}
-          type={'password'}
-        />
+        <ControlledCheckBox control={control} label={'Remember me'} name={'rememberMe'} />
         <Button className={s.singUp} disabled={isSubmitting} fullWidth type={'submit'}>
           Sign Up
         </Button>
         <Typography className={s.description} variant={'body2'}>
-          Already have an account?
+          {`Don't have an account?`}
         </Typography>
         <Button as={'a'} className={s.singIn} variant={'link'}>
-          Sign In
+          Sign Up
         </Button>
       </form>
     </Card>
