@@ -1,28 +1,23 @@
-import { Table } from '@/components/ui/Table/Table'
-import { Typography } from '@/components/ui/Typography'
-import {
-  useCreateDeckMutation,
-  useGetDecksByIdQuery,
-  useGetDecksQuery,
-} from '@/services/decks.service'
+import {Table} from '@/components/ui/Table/Table'
+import {Typography} from '@/components/ui/Typography'
+import {useGetDecksQuery} from '@/services/decks/decks.service'
 
 export const Decks = () => {
-  const { data, error, isLoading, refetch } = useGetDecksQuery({ currentPage: 2, itemsPerPage: 3 })
-  const { data: deckByIdData } = useGetDecksByIdQuery({ id: 'cltob3pyr0646v72g9bvra7kd' })
-  const [createDecks, { isLoading: isDeckBeingCreated }] = useCreateDeckMutation()
+  const { data, isError,error, isLoading } = useGetDecksQuery({ })
 
-  console.log('deckByIdData: ', deckByIdData)
-  if (error) {
-    return (
-      <>
-        <Typography style={{ color: '#fff' }} variant={'h1'}>
-          ...An error has occurred
-        </Typography>
-        <Typography style={{ color: '#fff' }} variant={'h1'}>
-          {/*{JSON.stringify(error.data?.message)}*/}
-        </Typography>
-      </>
-    )
+  const testClcik = () => {
+    const formData = new FormData()
+    formData.append('name', '111')
+    formData.append('cover', 'asdasd')
+    formData.append('isPrivate', 'false')
+
+
+    console.log('query', Object.fromEntries(formData))
+
+  }
+
+  if(isError) {
+    return <div>{JSON.stringify({error})}</div>
   }
 
   if (isLoading) {
@@ -57,6 +52,7 @@ export const Decks = () => {
           })}
         </Table.Body>
       </Table.Root>
+      <button onClick={testClcik}>add</button>
     </div>
   )
 }
