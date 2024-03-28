@@ -1,28 +1,23 @@
 import { Table } from '@/components/ui/Table/Table'
 import { Typography } from '@/components/ui/Typography'
-import {
-  useCreateDeckMutation,
-  useGetDecksByIdQuery,
-  useGetDecksQuery,
-} from '@/services/decks.service'
+import { useCreateDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
 
 export const Decks = () => {
-  const { data, error, isLoading, refetch } = useGetDecksQuery({ currentPage: 2, itemsPerPage: 3 })
-  const { data: deckByIdData } = useGetDecksByIdQuery({ id: 'cltob3pyr0646v72g9bvra7kd' })
-  const [createDecks, { isLoading: isDeckBeingCreated }] = useCreateDeckMutation()
+  const { data, error, isError, isLoading } = useGetDecksQuery({})
+  const [createdDeck, {}] = useCreateDeckMutation()
 
-  console.log('deckByIdData: ', deckByIdData)
-  if (error) {
-    return (
-      <>
-        <Typography style={{ color: '#fff' }} variant={'h1'}>
-          ...An error has occurred
-        </Typography>
-        <Typography style={{ color: '#fff' }} variant={'h1'}>
-          {/*{JSON.stringify(error.data?.message)}*/}
-        </Typography>
-      </>
-    )
+  const createDeck = () => {
+    const formData = new FormData()
+
+    formData.append('name', 'Dima')
+    formData.append('cover', 'pictures')
+    formData.append('isPrivate', 'true')
+    console.log('formData', Object.fromEntries(formData))
+    createdDeck(formData)
+  }
+
+  if (isError) {
+    return <div>{JSON.stringify({ error })}</div>
   }
 
   if (isLoading) {
@@ -57,6 +52,13 @@ export const Decks = () => {
           })}
         </Table.Body>
       </Table.Root>
+      <button onClick={createDeck}>createDeck</button>
     </div>
   )
 }
+
+const fn = () => {}
+
+const arr = ['asasa', 2121, fn]
+
+console.log(arr)
