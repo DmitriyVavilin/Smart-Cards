@@ -1,23 +1,23 @@
-import {Table} from '@/components/ui/Table/Table'
-import {Typography} from '@/components/ui/Typography'
-import {useGetDecksQuery} from '@/services/decks/decks.service'
+import { Table } from '@/components/ui/Table/Table'
+import { Typography } from '@/components/ui/Typography'
+import { useCreateDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
 
 export const Decks = () => {
-  const { data, isError,error, isLoading } = useGetDecksQuery({ })
+  const { data, error, isError, isLoading } = useGetDecksQuery({})
+  const [createdDeck, {}] = useCreateDeckMutation()
 
-  const testClcik = () => {
+  const createDeck = () => {
     const formData = new FormData()
-    formData.append('name', '111')
-    formData.append('cover', 'asdasd')
-    formData.append('isPrivate', 'false')
 
-
-    console.log('query', Object.fromEntries(formData))
-
+    formData.append('name', 'Dima')
+    formData.append('cover', 'pictures')
+    formData.append('isPrivate', 'true')
+    console.log('formData', Object.fromEntries(formData))
+    createdDeck(formData)
   }
 
-  if(isError) {
-    return <div>{JSON.stringify({error})}</div>
+  if (isError) {
+    return <div>{JSON.stringify({ error })}</div>
   }
 
   if (isLoading) {
@@ -52,7 +52,13 @@ export const Decks = () => {
           })}
         </Table.Body>
       </Table.Root>
-      <button onClick={testClcik}>add</button>
+      <button onClick={createDeck}>createDeck</button>
     </div>
   )
 }
+
+const fn = () => {}
+
+const arr = ['asasa', 2121, fn]
+
+console.log(arr)

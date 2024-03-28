@@ -1,13 +1,16 @@
-import {baseApi} from '@/services/base-api'
+import { Card, CardsResponse } from '@/data-contracts'
+import { baseApi } from '@/services/base-api'
+
 import {
-  CreatedDecksCardRequest,
   Deck,
+  DeckDeleteResponse,
   DecksMinMaxPagination,
-  DecksResponse, GetDeckLearnArgs,
+  DecksResponse,
+  GetDeckLearnArgs,
   GetDecksArgs,
-  GetDecksCardArgs, SaveCardRatingResponse,
+  GetDecksCardArgs,
+  SaveCardRatingResponse,
 } from './decks.types'
-import {Card, CardsResponse} from "@/data-contracts";
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
@@ -22,6 +25,37 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
+      createDeckCard: builder.mutation<Card, { formData: FormData; id: string }>({
+        invalidatesTags: ['Decks'],
+        query: ({ id, ...args }) => {
+          return {
+            body: {
+              ...Object.fromEntries(args.formData),
+            },
+            content: 'multipart/form-data',
+            method: 'POST',
+            url: `v1/decks/${id}/cards`,
+          }
+        },
+      }),
+      deleteDecks: builder.mutation<DeckDeleteResponse, string>({
+        invalidatesTags: ['Decks'],
+        query: id => {
+          return {
+            method: 'DELETE',
+            url: `v1/decks/${id}`,
+          }
+        },
+      }),
+      getDeckLearn: builder.query<Deck, GetDeckLearnArgs>({
+        providesTags: ['Decks'],
+        query: ({ id, ...args }) => {
+          return {
+            params: args,
+            url: `v1/decks/${id}/cards`,
+          }
+        },
+      }),
       getDecks: builder.query<DecksResponse, GetDecksArgs | void>({
         providesTags: ['Decks'],
         query: args => {
@@ -31,7 +65,7 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
-      getDecksById: builder.query<DecksResponse, {id: string}>({
+      getDecksById: builder.query<DecksResponse, { id: string }>({
         providesTags: ['Decks'],
         query: ({ id }) => {
           return {
@@ -39,73 +73,57 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
-      getDesksMinMaxCards: builder.query<DecksMinMaxPagination,void>({
+      getDecksCards: builder.query<CardsResponse, GetDecksCardArgs>({
+        providesTags: ['Decks'],
+        query: ({ id, ...args }) => {
+          return {
+            params: args,
+            url: `v1/decks/${id}/cards`,
+          }
+        },
+      }),
+      getDesksMinMaxCards: builder.query<DecksMinMaxPagination, void>({
         providesTags: ['Decks'],
         query: () => {
           return {
-            url: `v2/decks/min-max-cards`
+            url: `v2/decks/min-max-cards`,
           }
-        }
+        },
       }),
-      updateDesks: builder.mutation<Deck, {id: string} & FormData >({
-        invalidatesTags: ['Decks'],
-        query:({id, ...args}) => {
+      saveCardRating: builder.mutation<Deck, { id: string } & SaveCardRatingResponse>({
+        query: ({ id, ...args }) => {
           return {
-            url: `v1/decks/${id}`,
             body: args,
+            method: 'POST',
+            url: `v1/decks/${id}/cards`,
+          }
+        },
+      }),
+      updateDesks: builder.mutation<Deck, { id: string } & FormData>({
+        invalidatesTags: ['Decks'],
+        query: ({ id, ...args }) => {
+          return {
+            body: args,
+            formData: true,
             method: 'PATCH',
-            formData: true
-          }
-        }
-      }),
-      deleteDecks: builder.mutation<Deck,{id: string}>({
-        invalidatesTags: ['Decks'],
-        query: ({id}) => {
-          return {
             url: `v1/decks/${id}`,
-            method: 'DELETE'
           }
-        }
+        },
       }),
-      getDecksCards: builder.query<CardsResponse,GetDecksCardArgs>({
-        providesTags: ['Decks'],
-        query: ({id, ...args}) => {
-          return {
-            url: `v1/decks/${id}/cards`,
-            params: args
-          }
-        }
-      }),
-      createDeckCard: builder.mutation<Card,{id: string} & FormData>({
-        invalidatesTags: ['Decks'],
-        query: ({id, ...args}) => {
-          return {
-            url: `v1/decks/${id}/cards`,
-            method: 'POST',
-            body: args
-          }
-        }
-      }),
-      getDeckLearn: builder.query<Deck,GetDeckLearnArgs>({
-        providesTags: ['Decks'],
-        query: ({id, ...args}) => {
-          return {
-            url: `v1/decks/${id}/cards`,
-            params: args
-          }
-        }
-      }),
-      saveCardRating: builder.mutation<Deck,{id: string} &SaveCardRatingResponse>({
-        query: ({id,...args}) => {
-          return {
-            url: `v1/decks/${id}/cards`,
-            method: 'POST',
-            body: args
-          }
-        }
-      })
     }
   },
 })
 
-export const {useUpdateDesksMutation, useCreateDeckMutation,useGetDecksByIdQuery, useGetDecksQuery,useGetDesksMinMaxCardsQuery, } = decksService
+export const {
+  useCreateDeckCardMutation,
+  useCreateDeckMutation,
+  useDeleteDecksMutation,
+  useGetDeckLearnQuery,
+  useGetDecksByIdQuery,
+  useGetDecksQuery,
+  useGetDesksMinMaxCardsQuery,
+  useLazyGetDeckLearnQuery,
+  useLazyGetDecksCardsQuery,
+  useLazyGetDesksMinMaxCardsQuery,
+  useUpdateDesksMutation,
+} = decksService

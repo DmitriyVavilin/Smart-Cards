@@ -1,4 +1,4 @@
-import {Pagination} from "@/data-contracts";
+import { Pagination } from '@/data-contracts'
 
 export type DecksResponse = {
   items: Deck[]
@@ -21,7 +21,7 @@ export type GetDecksArgs = {
 }
 
 export type Deck = {
-  author?: DecksAuthor
+  author: DecksAuthor
   cardsCount: number
   cover: string
   created: string
@@ -32,19 +32,20 @@ export type Deck = {
   userId: string
 }
 
+export type DeckDeleteResponse = Omit<Deck, 'author'>
 
 export type DecksMinMaxPagination = {
   max: number
   min: number
 }
 
-export type  GetDecksCardArgs = {
-  id: string
-  question?: string
+export type GetDecksCardArgs = {
   answer?: string
-  orderBy?: string
-  currentPage?:number
+  currentPage?: number
+  id: string
   itemsPerPage?: number
+  orderBy?: string
+  question?: string
 }
 
 export type GetDeckLearnArgs = {
@@ -52,6 +53,6 @@ export type GetDeckLearnArgs = {
   previousCardId: string
 }
 export type SaveCardRatingResponse = {
-  "cardId": string
-  "grade": number
+  cardId: string
+  grade: number
 }
